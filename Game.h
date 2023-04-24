@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 #include <C:/Users/vtakk/CLionProjects/2_semestr/LaboratoryWork_1/SFML-2.5.1/include/SFML/Graphics.hpp>
-#include "Map.h"
+#include "Map/Map.h"
 
 namespace mt {
     class Game {

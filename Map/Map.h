@@ -18,10 +18,7 @@ namespace m{
     public:
         Map(std::string path){
             std::cout << "Map Constructor" << std::endl;
-            //path ="C:\\Users\\vtakk\\CLionProjects\\2_semestr\\Susuwatari\\files\\Map.txt";
             map_file.open(path);
-            //map_file.open("C:/Users/vtakk/CLionProjects/2_semestr/Susuwatari/files/Map.txt");
-            //out.open("SecondMap.txt");
         }
         ~Map(){
             std::cout << "Map Destructor" << std::endl;
@@ -51,7 +48,7 @@ namespace m{
         void SetImage(){
             std::cout << "Image complite" <<std::endl;
             sf::Image map_image;//объект изображения для карты
-            map_image.loadFromFile("C:/Users/vtakk/CLionProjects/2_semestr/Susuwatari/files/map.png");
+            map_image.loadFromFile("C:/Users/vtakk/CLionProjects/2_semestr/Susuwatari/Map/files/map.png");
             map_texture.loadFromImage(map_image);
              //map_texture;
             map_sprite.setTexture(map_texture);

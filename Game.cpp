@@ -26,7 +26,7 @@ namespace mt {
         sf::Clock timer;
         sf::CircleShape ball(50);
 
-        m::Map map( "C:\\Users\\vtakk\\CLionProjects\\2_semestr\\Susuwatari\\files\\Map.txt");
+        m::Map map( "C:\\Users\\vtakk\\CLionProjects\\2_semestr\\Susuwatari\\Map\\files\\Map.txt");
         map.SetMassive();
         map.SetImage();
 
