@@ -33,13 +33,13 @@ namespace mt {
         sf::Image Susa;
         Susa.loadFromFile("C:/Users/vtakk/CLionProjects/2_semestr/Susuwatari/Map/files/susa4.png");
         Player susa(Susa, 300-16, 500, 32, 32,"susa");
-        //Player susa(Susa, 88*32 , 9*32, 32, 32,"susa");
+        //Player susa(Susa, 73*32 , 14*32, 32, 32,"susa");
         susa.SetMap(map.GetMassive());
 
         sf::Image Clip;
         Clip.loadFromFile("C:/Users/vtakk/CLionProjects/2_semestr/Susuwatari/Map/files/clip.png");
-        Enemy clip1(Clip, 448, 2464, 32, 32, "clip");
-        Enemy clip2(Clip, 78 * 32, 13*32, 32, 32, "clip");
+        Enemy clip1(Clip, 2464,416, 32, 32, "clip");
+        Enemy clip2(Clip, 138 * 32, 4*32, 32, 32, "clip");
 
         float CurrentFrame = 0;
         sf::Clock clock;
@@ -55,7 +55,7 @@ namespace mt {
             }
 
             //////////////////// СТОЛКНОВЕНИЕ С ВРАГОМ ////////////////////
-            if (clip1.getRect().intersects(susa.getRect()) || clip2.getRect().intersects(susa.getRect())) //если скрепка пересекается с игроком
+            if (clip1.getRect().intersects(susa.getRect()) )//|| clip2.getRect().intersects(susa.getRect())) //если скрепка пересекается с игроком
             {
                 susa.life = false; //персонаж умирает
             }

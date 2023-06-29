@@ -50,7 +50,7 @@ namespace m {
     void Map::SetImage() {
         std::cout << "Image complite" << std::endl;
         sf::Image map_image;//объект изображения для карты
-        map_image.loadFromFile("C:/Users/vtakk/CLionProjects/2_semestr/Susuwatari/Map/files/Sprites.png");
+        map_image.loadFromFile("C:/Users/vtakk/CLionProjects/2_semestr/Susuwatari/Map/files/Texturs.png");
         map_texture.loadFromImage(map_image);
         //map_texture;
         map_sprite.setTexture(map_texture);
@@ -93,28 +93,28 @@ namespace m {
                 map_sprite.setTextureRect(sf::IntRect(528, 32, 160, 32));
                 break;
             case '1':
-                map_sprite.setTextureRect(sf::IntRect(41, 0, 32, 32));
+                map_sprite.setTextureRect(sf::IntRect(48, 0, 32, 32));
                 break;
             case '2':
-                map_sprite.setTextureRect(sf::IntRect(41 + 32, 0, 32, 32));
+                map_sprite.setTextureRect(sf::IntRect(48 + 32, 0, 32, 32));
                 break;
             case '3':
-                map_sprite.setTextureRect(sf::IntRect(41 + 64, 0, 32, 32));
+                map_sprite.setTextureRect(sf::IntRect(48 + 64, 0, 32, 32));
                 break;
             case '4':
-                map_sprite.setTextureRect(sf::IntRect(41 + 96, 0, 32, 32));
+                map_sprite.setTextureRect(sf::IntRect(48 + 96, 0, 32, 32));
                 break;
             case '5':
-                map_sprite.setTextureRect(sf::IntRect(41 + 96 + 32, 0, 32, 32));
+                map_sprite.setTextureRect(sf::IntRect(48 + 96 + 32, 0, 32, 32));
                 break;
             case '6':
-                map_sprite.setTextureRect(sf::IntRect(41 + 96 + 64, 0, 32, 32));
+                map_sprite.setTextureRect(sf::IntRect(48 + 96 + 64, 0, 32, 32));
                 break;
             case '7':
-                map_sprite.setTextureRect(sf::IntRect(41 + 96 + 96, 0, 32, 32));
+                map_sprite.setTextureRect(sf::IntRect(48 + 96 + 96, 0, 32, 32));
                 break;
             case '8':
-                map_sprite.setTextureRect(sf::IntRect(41 + 96 + 96 + 32, 0, 32, 32));
+                map_sprite.setTextureRect(sf::IntRect(48 + 96 + 96 + 32, 0, 32, 32));
                 break;
             case 'N':
                 map_sprite.setTextureRect(sf::IntRect(0, 209, 32, 32));
