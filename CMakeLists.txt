@@ -3,8 +3,8 @@ project(Susuwatari)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Susuwatari main.cpp Game.h Game.cpp Ball.h
-        Map/Map.h Entity.h)
+add_executable(Susuwatari main.cpp Game.h Game.cpp
+        Map/Map.h Entity.h Entity.cpp Map/Map.cpp)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR C:/Program Files (x86)/SFML-2.5.1/lib/cmake/SFML)

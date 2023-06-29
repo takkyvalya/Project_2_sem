@@ -1,6 +1,6 @@
 #include <string>
+
 #include "Game.h"
-#include "Ball.h"
 
 namespace mt {
 
@@ -23,28 +23,26 @@ namespace mt {
     }
 
     void Game::Run() {
-
-        //sf::Clock timer;
-        //mt::Ball ball({300,360},14,sf::Color::Black);
-        //sf::CircleShape ball1(50);
-
         m::Map map( "C:\\Users\\vtakk\\CLionProjects\\2_semestr\\Susuwatari\\Map\\files\\Map.txt");
         map.SetMassive();
         map.SetImage();
 
         sf::View view(sf::FloatRect(0.f, 0.f, m_width, m_height));
-        view.setCenter(300,320);
-        //view.zoom(2.0f);
-        //view.move(1000.f,0.f);
         view.zoom(0.3f);
 
         sf::Image Susa;
-        Susa.loadFromFile("C:/Users/vtakk/CLionProjects/2_semestr/Susuwatari/Map/files/susa.png");
+        Susa.loadFromFile("C:/Users/vtakk/CLionProjects/2_semestr/Susuwatari/Map/files/susa4.png");
+        Player susa(Susa, 300-16, 500, 32, 32,"susa");
+        //Player susa(Susa, 88*32 , 9*32, 32, 32,"susa");
+        susa.SetMap(map.GetMassive());
+
+        sf::Image Clip;
+        Clip.loadFromFile("C:/Users/vtakk/CLionProjects/2_semestr/Susuwatari/Map/files/clip.png");
+        Enemy clip1(Clip, 448, 2464, 32, 32, "clip");
+        Enemy clip2(Clip, 78 * 32, 13*32, 32, 32, "clip");
 
         float CurrentFrame = 0;
         sf::Clock clock;
-
-        Player susa(Susa, 300-16, 300, 32, 32,"susa");
 
         while (m_window->isOpen()) {
             sf::Event event;
@@ -56,10 +54,17 @@ namespace mt {
                     m_window->close();
             }
 
+            //////////////////// СТОЛКНОВЕНИЕ С ВРАГОМ ////////////////////
+            if (clip1.getRect().intersects(susa.getRect()) || clip2.getRect().intersects(susa.getRect())) //если скрепка пересекается с игроком
+            {
+                susa.life = false; //персонаж умирает
+            }
+
+            ///////////////////
             //sf::Time dt = timer.restart();
-
-
-            susa.update(time, map.GetMassive(), &CurrentFrame , time, &view);
+            susa.update(time, &CurrentFrame , time, &view);
+            clip1.update(time);
+            clip2.update(time);
 
             m_window->clear();
             m_window->setView(view);
@@ -71,6 +76,8 @@ namespace mt {
 
                      //m_window->draw(ball1);
             m_window->draw(*susa.GetSprite());
+            m_window->draw(*clip1.GetSprite());
+            m_window->draw(*clip2.GetSprite());
             m_window->display();
         }
 
