@@ -44,6 +44,12 @@ namespace mt {
         float CurrentFrame = 0;
         sf::Clock clock;
 
+        /// Фон1 /// размер изображения должен быть 5000х1000 пикселей
+        sf::Texture texture_background;
+        texture_background.loadFromFile("C:/Users/vtakk/CLionProjects/2_semestr/Susuwatari/Map/files/Background.png"); //фон
+        sf::Sprite background;
+        background.setTexture(texture_background);
+
         while (m_window->isOpen()) {
             sf::Event event;
             float time = clock.getElapsedTime().asMicroseconds();
@@ -68,6 +74,9 @@ namespace mt {
 
             m_window->clear();
             m_window->setView(view);
+
+            /// Фон 2 ///
+            m_window->draw(background);
 
             //Рисуем карту
             for (int i = 0; i < map.GetHEIGHT(); i++)
