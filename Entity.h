@@ -1,56 +1,66 @@
 #pragma once
 #include "Game.h"
 
-    class Entity {
-    protected:
-        float x, y, dx, dy, speed, moveTimer;
-        int w, h;
-        bool isMove, onGround;
-        sf::String name;
-        sf::Texture texture;
-        sf::Sprite sprite;
-        char **map;
-    public:
-        Entity(sf::Image &image, float X, float Y, int W, int H, sf::String Name);
 
-        sf::FloatRect getRect();
+class Entity {
+protected:
+    float x, y, dx, dy, speed, moveTimer;
+    int w, h;
+    bool isMove, onGround;
+    sf::String name;
+    sf::Texture texture;
+    sf::Sprite sprite;
+    char** map;
+public:
+    Entity(sf::Image& image, float X, float Y, int W, int H, sf::String Name);
 
-        void SetMap(char **Map);
+    sf::FloatRect getRect();
 
-        sf::Sprite* GetSprite();
-    };
+    void SetMap(char** Map);
 
-    class Player : public Entity {
-        private:
-            int count = 0; //счетчик букв
+    sf::Sprite* GetSprite();
 
-            void Stopper(float Dx, float Dy, int i, int j);
+    //virtual void update(float time) = 0; //все потомки переопределяют эту функцию
+};
 
-        public:
-            bool life = true; //переменная жизни
+class Player : public Entity {
+private:
+    int count = 0; //счетчик букв
 
-            enum { left, right, up, doun, jump, stay } state;  // пречисление состояния персонажа
+    void Stopper(float Dx, float Dy, int i, int j);
+    float deathTimer = 0;
 
-            Player(sf::Image &image, float X, float Y, int W, int H, sf::String Name);
+public:
+    bool life = true;     //переменная жизни
+    bool flag = false;    //для смерти
+    bool sp_flag = false; //для паука
+    bool an_sp_flag = false;
+    enum { left, right, up, doun, jump, stay } state;  // пречисление состояния персонажа
 
-            ///////////////////////АНИМАЦИЯ///////////////////////////////
-            void control(float *CurrentFrame, float time, sf::View *view);
+    Player(sf::Image& image, float X, float Y, int W, int H, sf::String Name);
 
-            void checkCollisionWithMap(float Dx, float Dy);
+    ///////////////////////АНИМАЦИЯ///////////////////////////////
+    void control(float* CurrentFrame, float time, sf::View* view);
 
-            void update(float time, float *CurrentFrame, float t, sf::View *view);
+    void checkCollisionWithMap(float Dx, float Dy, float time);
 
-            float getplayercoordinateX();
+    void Spider(float time);
 
-            float getplayercoordinateY();
-    };
+    void revival(float time);
 
-    class Enemy : public Entity {
-        public:
-            float moveTimer = 0;
+    void update(float time, float* CurrentFrame, float t, sf::View* view);
 
-            Enemy(sf::Image &image, float X, float Y, int W, int H, sf::String Name);
+    float getplayercoordinateX();
 
-            void update(float time); //функция "оживления" объекта класса. update - обновление. принимает в себя время SFML , вследствие чего работает бесконечно, давая персонажу движение.
+    float getplayercoordinateY();
+};
 
-    };
+class Enemy : public Entity {
+public:
+    float moveTimer = 0;
+
+    Enemy(sf::Image& image, float X, float Y, int W, int H, sf::String Name);
+
+    void update(float time); //функция "оживления" объекта класса. update - обновление. принимает в себя время SFML , вследствие чего работает бесконечно, давая персонажу движение.
+
+};
